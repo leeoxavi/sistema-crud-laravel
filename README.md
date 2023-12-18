@@ -1,10 +1,3 @@
-5. **Documentação**: 
-
-   - Documente o processo de instalação e configuração do aplicativo. 
-
-   - Escreva um README claro e conciso. 
-
-
    # Sistema de Gerenciamento de Produtos
 
 Este é um aplicativo Laravel para gerenciar um catálogo de produtos em um estoque.
