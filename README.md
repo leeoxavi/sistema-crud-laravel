@@ -1,66 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+5. **Documentação**: 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+   - Documente o processo de instalação e configuração do aplicativo. 
 
-## About Laravel
+   - Escreva um README claro e conciso. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+   # Sistema de Gerenciamento de Produtos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Este é um aplicativo Laravel para gerenciar um catálogo de produtos em um estoque.
 
-## Learning Laravel
+## Instalação
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Repositório:**
+ https://github.com/seu-usuario/seu-repositorio.git
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+1. **Modelo de Dados**:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1 - Instalar Dependências do Composer:
+composer create-project --prefer-dist laravel/laravel CRUD
 
-### Premium Partners
+2 - Criação do Modelo e Migração:
+php artisan make:model Product -m
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3 - definir os campos necessários para o produto em: database>migrations>products
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Migrations**:
 
-## Security Vulnerabilities
+1 - conectar com o banco de dados :
+Abra o arquivo .env e configure as informações do banco de dados.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+2 - Executar as Migrações do Banco de Dados:
+php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3 - verificar as rotas do banco :
+php artisan route:list
+
+
+
+
+3. **Seeders**:
+
+1 - crie o Seeder e adicione os dados fictícios : database>seeders>ProductsTableSeeder
+php artisan make:seeder ProductsTableSeeder
+
+2 - executar o seeder:
+php artisan db:seed --class=ProductsTableSeeder
+
+
+
+
+5. **Controllers**: 
+
+1 - criar o arquivo ProductController e defina as rotas:
+php artisan make:controller ProductController
+
+2 - Para verificar as rotas definidas:
+php artisan route:list
+
+
+
+
+6. **Views**: 
+
+1 - crie a pasta "products" e "layouts" em resources>views:
+em products crie os arquivos das views:
+-index.blade.php
+-create.blade.php
+-edit.blade.php
+-show.blade.php/
+
+2 - em layouts crie o arquivo:
+-app.blade.php
+
+3 - defina a estrutura para todas as páginas.
+
+
+
+
+7. **Validação**: 
+
+1 - valide os dados usando:
+
+required (obrigatório), 
+string (deve ser uma string),  
+unique:products (deve ser único na tabela products).
+Para o método update, usamos unique:products,code,' . $id 
+
+
+
+
+8. **Testes**: 
+
+1 - crie testes usando o comando :
+php artisan make:test ProductControllerTest
+
+2 - defina a estrutura no arquivo tests/Feature/ProductControllerTest.php :
+
+3 - faça o teste usando o comando :
+php artisan test
+
+
+O aplicativo estará disponível em http://localhost:8000.
+
+Uso
+Acesse o aplicativo no navegador.
+Gerencie produtos através da interface do usuário.
+
