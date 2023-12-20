@@ -5,7 +5,7 @@ Este é um aplicativo Laravel para gerenciar um catálogo de produtos em um esto
 ## Instalação
 
 **Repositório:**
- https://github.com/seu-usuario/seu-repositorio.git
+ https://github.com/leeoxavi/sistema-crud-laravel.git
 
 
 
